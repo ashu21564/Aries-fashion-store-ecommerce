@@ -1,0 +1,126 @@
+.container {
+    margin: 40px auto;
+    max-width: 1200px;
+    padding: 0 20px;
+}
+
+h2 {
+    font-family: var(--font-heading);
+    color: var(--gold-primary);
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-align: center;
+}
+
+.products-layout {
+    display: flex;
+    gap: 40px;
+}
+
+/* FILTER PANEL */
+.filter-panel {
+    width: 280px;
+    background: #111;
+    padding: 25px;
+    border-radius: 12px;
+    border: 1px solid rgba(212, 175, 55, 0.1);
+    color: var(--text-light);
+    box-shadow: 0 5px 20px rgba(0,0,0,0.5);
+    height: fit-content;
+}
+
+.filter-group {
+    margin-bottom: 20px;
+}
+
+.filter-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-family: var(--font-heading);
+    color: var(--gold-light);
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.filter-group input,
+.filter-group select {
+    width: 100%;
+    padding: 12px;
+    border-radius: 6px;
+    border: 1px solid #333;
+    background: #0a0a0a;
+    color: white;
+    font-family: var(--font-body);
+    transition: border-color 0.3s ease;
+}
+
+.filter-group input:focus,
+.filter-group select:focus {
+    outline: none;
+    border-color: var(--gold-primary);
+}
+
+/* BUTTONS */
+.filter-actions {
+    margin-top: 25px;
+    display: flex;
+    gap: 10px;
+}
+
+.filter-actions .btn {
+    flex: 1;
+    background: var(--gold-primary);
+    color: #000;
+    border: none;
+    padding: 10px;
+    border-radius: 6px;
+    font-family: var(--font-heading);
+    text-transform: uppercase;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.filter-actions .btn:hover {
+    background: var(--gold-light);
+}
+
+.filter-actions a {
+    flex: 1;
+    display: flex;
+    text-decoration: none;
+}
+
+.filter-actions .btn-clear {
+    width: 100%;
+    background: transparent;
+    color: var(--text-light);
+    border: 1px solid #555;
+    padding: 10px;
+    border-radius: 6px;
+    font-family: var(--font-heading);
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+.filter-actions .btn-clear:hover {
+    background: #333;
+    border-color: #777;
+}
+
+/* RIGHT SIDE */
+.product-section {
+    flex: 1;
+}
+
+/* Products grid is inherited from home.css or defined here */
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+}

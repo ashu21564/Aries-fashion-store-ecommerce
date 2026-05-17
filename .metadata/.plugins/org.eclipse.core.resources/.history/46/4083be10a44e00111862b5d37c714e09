@@ -1,0 +1,78 @@
+/* ================= PRODUCT DETAILS PAGE ================= */
+
+.product-details-container {
+    margin-top: 40px;
+}
+
+/* MAIN LAYOUT */
+.product-details {
+    display: flex;
+    gap: 40px;
+    align-items: flex-start;
+}
+
+/* IMAGE SECTION */
+.product-image img {
+    width: 350px;
+    border-radius: 12px;
+    object-fit: cover;
+}
+
+/* DETAILS SECTION */
+.product-info {
+    flex: 1;
+}
+
+/* TITLE */
+.product-info h2 {
+    margin-bottom: 10px;
+    color: #ffffff;
+}
+
+/* DESCRIPTION */
+.product-info p {
+    color: #cccccc;
+    line-height: 1.5;
+}
+
+/* PRICE / DISCOUNT */
+.product-price {
+    margin-top: 10px;
+    font-size: 20px;
+    color: #C71585;
+    font-weight: bold;
+}
+
+/* SIZE SELECT */
+.size-select {
+    margin-top: 20px;
+}
+
+.size-select label {
+    display: block;
+    margin-bottom: 8px;
+    color: #ffffff;
+}
+
+.size-select select {
+    padding: 10px;
+    width: 200px;
+    border-radius: 6px;
+    border: none;
+}
+
+/* BUTTON */
+.add-to-cart-btn {
+    margin-top: 20px;
+    padding: 10px 16px;
+    background: #C71585;
+    border: none;
+    color: white;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.add-to-cart-btn:hover {
+    background: #a0136a;
+}

@@ -1,0 +1,122 @@
+/* ===== GLOBAL ===== */
+body {
+    background: #121212;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+/* ===== CONTAINER ===== */
+.product-details-container {
+    width: 90%;
+    margin: 50px auto;
+    color: #fff;
+}
+
+/* ===== MAIN LAYOUT ===== */
+.product-details {
+    display: flex;
+    gap: 50px;
+    align-items: flex-start;
+}
+
+/* ===== IMAGE ===== */
+.product-image {
+    flex: 1;
+    background: #1e1e1e;
+    padding: 20px;
+    border-radius: 12px;
+    text-align: center;
+}
+
+.product-image img {
+    width: 100%;
+    max-width: 400px;
+    border-radius: 10px;
+    transition: 0.3s;
+}
+
+.product-image img:hover {
+    transform: scale(1.05);
+}
+
+/* ===== INFO ===== */
+.product-info {
+    flex: 1;
+}
+
+/* TITLE */
+.product-info h2 {
+    font-size: 26px;
+    margin-bottom: 10px;
+}
+
+/* DESCRIPTION */
+.description {
+    color: #bbb;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+/* PRICE BOX */
+.price-box {
+    margin: 15px 0;
+}
+
+.discount {
+    font-size: 22px;
+    color: #ff4da6;
+    font-weight: bold;
+}
+
+/* ===== SIZE ===== */
+.size-select {
+    margin-top: 20px;
+}
+
+.size-select label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+
+.size-select select {
+    width: 200px;
+    padding: 10px;
+    border-radius: 6px;
+    border: none;
+    background: #2a2a2a;
+    color: #fff;
+}
+
+/* ===== BUTTON ===== */
+.add-to-cart-btn {
+    margin-top: 25px;
+    padding: 14px 20px;
+    background: linear-gradient(135deg, #ff4da6, #c2185b);
+    border: none;
+    color: #fff;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.add-to-cart-btn:hover {
+    background: linear-gradient(135deg, #c2185b, #8b004d);
+    transform: scale(1.03);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 900px) {
+    .product-details {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .product-image img {
+        max-width: 300px;
+    }
+
+    .product-info {
+        text-align: center;
+    }
+}

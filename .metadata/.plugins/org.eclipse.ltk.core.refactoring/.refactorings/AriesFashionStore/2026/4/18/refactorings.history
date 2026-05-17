@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Move element &apos;DBConnection.java&apos; to &apos;AriesFashionStore/src/main/java/com.ariesfashionstore.util&apos;&#x0D;&#x0A;- Original project: &apos;AriesFashionStore&apos;&#x0D;&#x0A;- Destination element: &apos;AriesFashionStore/src/main/java/com.ariesfashionstore.util&apos;&#x0D;&#x0A;- Original element: &apos;DBConnection.java&apos;&#x0D;&#x0A;- Update references to refactored element" description="Move file" destination="/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.ariesfashionstore.util" element1="src/main/java/DBConnection.java" files="1" flags="589830" folders="0" id="org.eclipse.jdt.ui.move" policy="org.eclipse.jdt.ui.moveResources" qualified="false" references="true" stamp="1777437986214" units="0" version="1.0"/>
+</session>

@@ -1,0 +1,131 @@
+/* ================= HERO ================= */
+.hero {
+    position: relative;
+    height: 360px;
+    overflow: hidden;
+}
+
+.hero-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* 🔥 LIGHT OVERLAY INSTEAD OF DARK */
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to right, rgba(0,0,0,0.4), rgba(199,21,133,0.3));
+}
+
+.hero-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+}
+
+.hero-content h1 {
+    font-size: 48px;
+    letter-spacing: 3px;
+}
+
+.hero-content p {
+    font-size: 18px;
+}
+
+/* ================= CATEGORY ================= */
+.category-section {
+    margin-top: 40px;
+}
+
+.categories {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+/* 🔥 SMALL CLEAN BUTTON STYLE */
+.category-card {
+    width: 90px;
+    height: 90px;
+    background: #1e1e1e;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    color: white;
+    transition: 0.3s;
+}
+
+/* 🔥 FORCE SMALL ICON */
+.category-card img {
+    width: 30px !important;
+    height: 30px !important;
+    max-width: 30px !important;
+    max-height: 30px !important;
+    object-fit: contain !important;
+    display: block;
+    margin: 0 auto;
+}
+/* TEXT */
+.category-card span {
+    margin-top: 6px;
+    font-size: 12px;
+}
+
+/* HOVER */
+.category-card:hover {
+    background: #C71585;
+    transform: translateY(-3px);
+}
+
+/* ================= PRODUCTS ================= */
+.products-section {
+    margin-top: 40px;
+}
+
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+}
+
+.product-card {
+    background: #1e1e1e;
+    color: white;
+    padding: 15px;
+    border-radius: 12px;
+    text-align: center;
+}
+
+.product-card img {
+    width: 100%;
+    height: 180px;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+.product-card h3 {
+    margin: 10px 0;
+}
+
+.product-card p {
+    color: #C71585;
+}
+
+.btn {
+    margin-top: 10px;
+    padding: 8px 12px;
+    background: #C71585;
+    border: none;
+    color: white;
+    border-radius: 6px;
+}

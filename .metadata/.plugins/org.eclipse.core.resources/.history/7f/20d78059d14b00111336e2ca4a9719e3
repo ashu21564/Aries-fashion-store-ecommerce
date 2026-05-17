@@ -1,0 +1,42 @@
+package com.ariesfashionstore.controller;
+
+import com.ariesfashionstore.dao.ProductDAO;
+import com.ariesfashionstore.dao.impl.ProductDAOImpl;
+import com.ariesfashionstore.model.Product;
+
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.*;
+
+import java.io.IOException;
+import java.util.List;
+
+@WebServlet("/products")
+public class ProductServlet extends HttpServlet {
+
+    private ProductDAO productDAO;
+
+    @Override
+    public void init() {
+        productDAO = new ProductDAOImpl();
+    }
+
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws IOException, jakarta.servlet.ServletException {
+
+        String keyword = request.getParameter("keyword");
+
+        List<Product> products;
+
+        if (keyword != null && !keyword.isEmpty()) {
+            products = productDAO.searchProducts(keyword);
+        } else {
+            products = productDAO.getAllActiveProducts();
+        }
+
+        request.setAttribute("products", products);
+
+        request.getRequestDispatcher("/WEB-INF/views/products.jsp")
+               .forward(request, response);
+    }
+}

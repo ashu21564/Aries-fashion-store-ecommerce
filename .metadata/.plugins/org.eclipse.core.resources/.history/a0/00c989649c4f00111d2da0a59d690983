@@ -1,0 +1,92 @@
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" isELIgnored="false" %>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
+
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/style.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/home.css">
+
+<%@ include file="partials/navbar.jsp" %>
+
+<!-- ================= HERO ================= -->
+<div class="hero-section">
+
+    <img src="${pageContext.request.contextPath}/assets/images/main_banner.jpg" 
+         class="hero-banner-img"
+         alt="Banner"
+         onerror="this.style.display='none'">
+
+    <div class="hero-content">
+        <h1>Upgrade Your Style</h1>
+        <p>Discover bold fashion with Aries Store</p>
+        <a href="${pageContext.request.contextPath}/products" class="hero-btn">
+            Shop Now →
+        </a>
+    </div>
+
+</div>
+
+<!-- ================= CATEGORY ================= -->
+<div class="category-section">
+
+    <h2>Shop by Category</h2>
+
+    <div class="categories">
+
+        <c:forEach var="c" items="${categories}">
+            <a href="${pageContext.request.contextPath}/category?id=${c.categoryId}" class="category-card">
+                ${c.categoryName}
+            </a>
+        </c:forEach>
+
+    </div>
+
+</div>
+
+<!-- ================= PRODUCTS ================= -->
+<div class="products-section">
+
+    <h2>Latest Products</h2>
+
+    <div class="products-grid">
+
+        <c:forEach var="p" items="${products}">
+
+            <div class="product-card">
+
+                <div class="product-img">
+                    <img src="${pageContext.request.contextPath}/assets/images/${p.imageUrl}"
+                         alt="${p.productName}"
+                         onerror="this.src='${pageContext.request.contextPath}/assets/images/default.png'">
+
+                    <span class="discount-badge">
+                        ${p.discountPercentage}% OFF
+                    </span>
+                </div>
+
+                <div class="product-info">
+
+                    <!-- ✅ PRODUCT NAME -->
+                    <h3>${p.productName}</h3>
+
+                    <!-- 🔥 PRICE ADDED -->
+                    <p class="price">₹ ${p.price}</p>
+
+                    <!-- 🔥 DISCOUNT TEXT -->
+                    <p>${p.discountPercentage}% OFF</p>
+
+                    <!-- BUTTON -->
+                    <a href="${pageContext.request.contextPath}/product-details?id=${p.productId}" 
+                       class="view-btn">
+                        View Product
+                    </a>
+
+                </div>
+
+            </div>
+
+        </c:forEach>
+
+    </div>
+
+</div>
+
+<%@ include file="partials/footer.jsp" %>

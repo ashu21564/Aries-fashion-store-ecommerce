@@ -1,0 +1,104 @@
+package com.ariesfashionstore.controller;
+
+import com.ariesfashionstore.dao.ProductDAO;
+import com.ariesfashionstore.dao.CategoryDAO;
+import com.ariesfashionstore.dao.impl.ProductDAOImpl;
+import com.ariesfashionstore.dao.impl.CategoryDAOImpl;
+import com.ariesfashionstore.model.Product;
+import com.ariesfashionstore.model.Category;
+
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.*;
+
+import java.io.IOException;
+import java.util.List;
+
+@WebServlet("/products")
+public class ProductServlet extends HttpServlet {
+
+    private static final long serialVersionUID = 1L;
+
+    private ProductDAO productDAO;
+    private CategoryDAO categoryDAO;
+
+    @Override
+    public void init() {
+        productDAO = new ProductDAOImpl();
+        categoryDAO = new CategoryDAOImpl();
+    }
+
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+
+        // 🔍 GET PARAMETERS
+        String keyword = request.getParameter("keyword");
+        String categoryIdStr = request.getParameter("categoryId");
+        String minPriceStr = request.getParameter("minPrice");
+        String maxPriceStr = request.getParameter("maxPrice");
+        String sort = request.getParameter("sort");
+
+        List<Product> products;
+
+        try {
+
+            // DEFAULT VALUES
+            int categoryId = 0;
+            double minPrice = 0;
+            double maxPrice = Double.MAX_VALUE;
+
+            if (categoryIdStr != null && !categoryIdStr.isEmpty()) {
+                categoryId = Integer.parseInt(categoryIdStr);
+            }
+
+            if (minPriceStr != null && !minPriceStr.isEmpty()) {
+                minPrice = Double.parseDouble(minPriceStr);
+            }
+
+            if (maxPriceStr != null && !maxPriceStr.isEmpty()) {
+                maxPrice = Double.parseDouble(maxPriceStr);
+            }
+
+            // ================= FILTER LOGIC =================
+
+            // 🔍 SEARCH
+            if (keyword != null && !keyword.trim().isEmpty()) {
+                products = productDAO.searchProducts(keyword);
+            }
+
+            // 📂 CATEGORY
+            else if (categoryId > 0) {
+                products = productDAO.getProductsByCategory(categoryId);
+            }
+
+            // 🔽 SORT
+            else if ("asc".equals(sort)) {
+                products = productDAO.getProductsSortedByPriceAsc();
+            }
+            else if ("desc".equals(sort)) {
+                products = productDAO.getProductsSortedByPriceDesc();
+            }
+
+            // 🛍️ DEFAULT
+            else {
+                products = productDAO.getAllActiveProducts();
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            products = productDAO.getAllActiveProducts();
+        }
+
+        // 📦 SEND DATA TO JSP
+        request.setAttribute("products", products);
+
+        // 🔥 IMPORTANT (for dropdown)
+        List<Category> categories = categoryDAO.getAllCategories();
+        request.setAttribute("categories", categories);
+
+        // 🔁 FORWARD
+        request.getRequestDispatcher("/WEB-INF/views/products.jsp")
+                .forward(request, response);
+    }
+}

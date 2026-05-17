@@ -1,0 +1,5 @@
+INDEX VERSION 1.134
+C:\Users\ashwi\Desktop\AriesFashions\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\230640311.index
+\AriesFashionStore\src\main\java
+C:\Users\ashwi\Desktop\AriesFashions\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2807687443.index
+\AriesFashionStore\src\main\java

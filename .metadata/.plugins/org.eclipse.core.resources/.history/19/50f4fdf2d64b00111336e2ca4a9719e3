@@ -1,0 +1,74 @@
+package com.ariesfashionstore.controller;
+
+import com.ariesfashionstore.dao.ProductDAO;
+import com.ariesfashionstore.dao.impl.ProductDAOImpl;
+import com.ariesfashionstore.model.Product;
+
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+
+import java.io.IOException;
+import java.util.List;
+
+@WebServlet("/products")
+public class ProductServlet extends HttpServlet {
+
+    private static final long serialVersionUID = 1L;
+
+    private ProductDAO productDAO;
+
+    @Override
+    public void init() {
+        productDAO = new ProductDAOImpl();
+    }
+
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+
+        String keyword = request.getParameter("keyword");
+        String categoryIdStr = request.getParameter("categoryId");
+        String sort = request.getParameter("sort");
+
+        List<Product> products;
+
+        try {
+
+            // 🔍 SEARCH
+            if (keyword != null && !keyword.trim().isEmpty()) {
+                products = productDAO.searchProducts(keyword.trim());
+            }
+
+            // 📂 CATEGORY FILTER
+            else if (categoryIdStr != null && !categoryIdStr.isEmpty()) {
+                int categoryId = Integer.parseInt(categoryIdStr);
+                products = productDAO.getProductsByCategory(categoryId);
+            }
+
+            // 🔽 SORTING
+            else if ("asc".equals(sort)) {
+                products = productDAO.getProductsSortedByPriceAsc();
+            } else if ("desc".equals(sort)) {
+                products = productDAO.getProductsSortedByPriceDesc();
+            }
+
+            // 🛍️ DEFAULT
+            else {
+                products = productDAO.getAllActiveProducts();
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            products = productDAO.getAllActiveProducts(); // fallback
+        }
+
+        // Send to JSP
+        request.setAttribute("products", products);
+
+        request.getRequestDispatcher("/WEB-INF/views/products.jsp")
+                .forward(request, response);
+    }
+}

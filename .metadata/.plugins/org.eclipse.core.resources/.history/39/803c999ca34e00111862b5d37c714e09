@@ -1,0 +1,101 @@
+/* ================= CHECKOUT PAGE ================= */
+
+/* HEADINGS */
+.container h2,
+.container h3 {
+    color: #ffffff;
+}
+
+/* TABLE */
+.checkout-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background: #1e1e1e;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.checkout-table th {
+    background: #8B0000; /* Dark Red */
+    color: white;
+    padding: 12px;
+}
+
+.checkout-table td {
+    padding: 12px;
+    text-align: center;
+    color: #ffffff;
+    border-bottom: 1px solid #333;
+}
+
+.checkout-table tr:hover {
+    background: #2a2a2a;
+}
+
+/* TOTAL */
+.checkout-total {
+    margin-top: 20px;
+    text-align: right;
+    color: #ffffff;
+}
+
+/* FORM */
+.checkout-form {
+    margin-top: 30px;
+    background: #1e1e1e;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+/* LABEL */
+.checkout-form label {
+    color: #ffffff;
+    display: block;
+    margin-bottom: 5px;
+}
+
+/* INPUTS */
+.checkout-form textarea,
+.checkout-form select {
+    width: 100%;
+    padding: 10px;
+    border-radius: 6px;
+    border: none;
+    margin-bottom: 15px;
+}
+
+/* BUTTON */
+.place-order-btn {
+    padding: 12px 20px;
+    background: #C71585; /* Magenta */
+    border: none;
+    color: white;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.place-order-btn:hover {
+    background: #8B0000;
+}
+
+/* EMPTY CART */
+.checkout-empty {
+    color: white;
+    margin-top: 20px;
+}
+
+.checkout-empty a {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px 15px;
+    background: #C71585;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.checkout-empty a:hover {
+    background: #8B0000;
+}

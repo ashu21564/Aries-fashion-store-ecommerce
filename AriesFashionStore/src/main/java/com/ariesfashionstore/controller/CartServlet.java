@@ -1,0 +1,95 @@
+package com.ariesfashionstore.controller;
+
+import com.ariesfashionstore.dao.CartDAO;
+import com.ariesfashionstore.dao.impl.CartDAOImpl;
+import com.ariesfashionstore.model.User;
+
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.*;
+
+import java.io.IOException;
+
+@WebServlet("/cart")
+public class CartServlet extends HttpServlet {
+
+    private CartDAO cartDAO;
+
+    @Override
+    public void init() {
+        cartDAO = new CartDAOImpl();
+    }
+
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+
+        String action = request.getParameter("action");
+
+        HttpSession session = request.getSession();
+        User user = (User) session.getAttribute("loggedUser");
+
+        if (user == null) {
+            response.sendRedirect(request.getContextPath() + "/login");
+            return;
+        }
+
+        int userId = user.getUserId();
+
+        if ("remove".equals(action)) {
+
+            int cartItemId = Integer.parseInt(request.getParameter("cartItemId"));
+            cartDAO.removeCartItem(cartItemId);
+
+            response.sendRedirect(request.getContextPath() + "/cart?action=view");
+            return;
+        }
+
+        request.setAttribute("cartItems", cartDAO.getCartItemsByUserId(userId));
+        request.getRequestDispatcher("/WEB-INF/views/cart.jsp").forward(request, response);
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws IOException {
+
+        String action = request.getParameter("action");
+
+        HttpSession session = request.getSession();
+        User user = (User) session.getAttribute("loggedUser");
+
+        if (user == null) {
+            response.sendRedirect(request.getContextPath() + "/login");
+            return;
+        }
+
+        int userId = user.getUserId();
+
+        if ("add".equals(action)) {
+
+            int productId = Integer.parseInt(request.getParameter("productId"));
+
+            // 🔥 FIX: handle size
+            String size = request.getParameter("sizeLabel");
+            if (size == null || size.isEmpty()) {
+                size = "M"; // default
+            }
+
+            cartDAO.addToCart(userId, productId, size, 1);
+
+            // 🔥 stay on same page
+            response.sendRedirect(request.getHeader("referer"));
+            return;
+        }
+
+        else if ("update".equals(action)) {
+
+            int cartItemId = Integer.parseInt(request.getParameter("cartItemId"));
+            int quantity = Integer.parseInt(request.getParameter("quantity"));
+
+            cartDAO.updateCartItemQuantity(cartItemId, quantity);
+        }
+
+        response.sendRedirect(request.getContextPath() + "/cart?action=view");
+    }
+}

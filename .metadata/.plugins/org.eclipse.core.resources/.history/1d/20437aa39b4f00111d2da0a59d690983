@@ -1,0 +1,49 @@
+package com.ariesfashionstore.dao;
+
+import com.ariesfashionstore.model.Product;
+import java.util.List;
+
+public interface ProductDAO {
+
+    // ================= CRUD =================
+
+    boolean addProduct(Product product);
+
+    boolean updateProduct(Product product);
+
+    boolean deleteProduct(int productId);
+
+    Product getProductById(int productId);
+
+
+    // ================= BASIC FETCH =================
+
+    List<Product> getAllProducts();
+
+    List<Product> getAllActiveProducts();
+
+
+    // ================= FILTERS =================
+
+    List<Product> getProductsByCategory(int categoryId);
+
+    List<Product> searchProducts(String keyword);
+
+    List<Product> getProductsByPriceRange(double minPrice, double maxPrice);
+
+    List<Product> getFilteredProducts(int categoryId, double minPrice, double maxPrice);
+
+
+    // ================= SORTING =================
+
+    List<Product> getProductsSortedByPriceAsc();
+
+    List<Product> getProductsSortedByPriceDesc();
+
+
+    // ================= SPECIAL =================
+
+    List<Product> getLatestProducts(int limit);
+
+    List<Product> getRelatedProducts(int productId, int categoryId);
+}

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aries Fashion Store | Bold. Elegant. Unapologetic.</title>
+    <meta name="description" content="Aries Fashion Store offers premium luxury clothing, accessories, and collections for men, women, and kids.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    
+    <main class="hero-container">
+        <!-- Split Backgrounds -->
+        <div class="bg-panels">
+            <div class="panel women-panel"></div>
+            <div class="panel men-panel"></div>
+            <div class="panel kids-panel"></div>
+            <div class="panel accessories-panel"></div>
+        </div>
+
+        <!-- Overlay to ensure text readability -->
+        <div class="overlay"></div>
+
+        <!-- Central Content Area -->
+        <div class="hero-content">
+            <div class="logo-container">
+                <img src="assets/img/aries_logo_gold_1778626761103.png" alt="Aries Fashion Store Logo" class="brand-logo">
+            </div>
+            
+            <h1 class="brand-title">ARIES</h1>
+            <h2 class="brand-subtitle">FASHION STORE</h2>
+            <div class="divider"></div>
+            <p class="brand-tagline">BOLD. ELEGANT. UNAPOLOGETIC.</p>
+            
+            <a href="#collection" class="btn-primary">SHOP THE COLLECTION</a>
+            
+            <!-- Category Icons Section -->
+            <div class="category-icons">
+                <a href="#men" class="icon-box">
+                    <i class="fa-solid fa-user-tie"></i>
+                    <span>MEN</span>
+                </a>
+                <div class="vert-divider"></div>
+                <a href="#women" class="icon-box">
+                    <i class="fa-solid fa-person-dress"></i>
+                    <span>WOMEN</span>
+                </a>
+                <div class="vert-divider"></div>
+                <a href="#kids" class="icon-box">
+                    <i class="fa-solid fa-child"></i>
+                    <span>KIDS</span>
+                </a>
+                <div class="vert-divider"></div>
+                <a href="#accessories" class="icon-box">
+                    <i class="fa-solid fa-gem"></i>
+                    <span>ACCESSORIES</span>
+                </a>
+            </div>
+        </div>
+        
+        <!-- Bottom Features Bar -->
+        <div class="features-bar">
+            <div class="feature-item">
+                <i class="fa-solid fa-check-circle gold-icon"></i>
+                <div class="feature-text">
+                    <strong>PREMIUM QUALITY</strong>
+                    <span>Curated Selections</span>
+                </div>
+            </div>
+            <div class="feature-item">
+                <i class="fa-solid fa-truck-fast gold-icon"></i>
+                <div class="feature-text">
+                    <strong>FREE SHIPPING</strong>
+                    <span>On Orders Over $99</span>
+                </div>
+            </div>
+            <div class="feature-item">
+                <i class="fa-solid fa-rotate-left gold-icon"></i>
+                <div class="feature-text">
+                    <strong>EASY RETURNS</strong>
+                    <span>Hassle Free Returns</span>
+                </div>
+            </div>
+            <div class="feature-item">
+                <i class="fa-solid fa-shield-halved gold-icon"></i>
+                <div class="feature-text">
+                    <strong>SECURE PAYMENT</strong>
+                    <span>100% Secure Checkout</span>
+                </div>
+            </div>
+        </div>
+    </main>
+
+</body>
+</html>

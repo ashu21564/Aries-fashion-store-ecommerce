@@ -1,0 +1,87 @@
+<%@ page contentType="text/html; charset=UTF-8" %>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
+
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/style.css">
+
+<%@ include file="partials/navbar.jsp" %>
+
+<div class="container" style="margin-top: 40px;">
+
+    <h2>Checkout</h2>
+
+    <c:if test="${empty cartItems}">
+        <p>Your cart is empty</p>
+        <a href="${pageContext.request.contextPath}/products" class="btn">Shop Now</a>
+    </c:if>
+
+    <c:if test="${not empty cartItems}">
+
+        <!-- 🔥 CART SUMMARY -->
+        <h3>Order Summary</h3>
+
+        <table style="width:100%; border-collapse: collapse; margin-top: 20px;">
+
+            <tr style="background:#111; color:white;">
+                <th>Product</th>
+                <th>Size</th>
+                <th>Qty</th>
+                <th>Price</th>
+                <th>Total</th>
+            </tr>
+
+            <c:set var="grandTotal" value="0"/>
+
+            <c:forEach var="item" items="${cartItems}">
+
+                <c:set var="itemTotal" value="${item.quantity * item.unitPrice}"/>
+                <c:set var="grandTotal" value="${grandTotal + itemTotal}"/>
+
+                <tr style="text-align:center; border-bottom:1px solid #ccc;">
+                    <td>${item.productName}</td>
+                    <td>${item.sizeLabel}</td>
+                    <td>${item.quantity}</td>
+                    <td>₹ ${item.unitPrice}</td>
+                    <td>₹ ${itemTotal}</td>
+                </tr>
+
+            </c:forEach>
+
+        </table>
+
+        <div style="margin-top:20px; text-align:right;">
+            <h3>Total: ₹ ${grandTotal}</h3>
+        </div>
+
+        <!-- 🔥 CHECKOUT FORM -->
+        <h3 style="margin-top:30px;">Delivery Details</h3>
+
+        <form action="${pageContext.request.contextPath}/checkout" method="post">
+
+            <!-- ADDRESS -->
+            <label>Delivery Address:</label><br><br>
+            <textarea name="address" rows="4" cols="50" required></textarea>
+
+            <br><br>
+
+            <!-- PAYMENT -->
+            <label>Payment Method:</label><br><br>
+
+            <select name="paymentMethod" required>
+                <option value="">Select</option>
+                <option value="COD">Cash on Delivery</option>
+                <option value="UPI">UPI</option>
+                <option value="CARD">Credit/Debit Card</option>
+            </select>
+
+            <br><br>
+
+            <!-- PLACE ORDER -->
+            <button type="submit" class="btn">Place Order</button>
+
+        </form>
+
+    </c:if>
+
+</div>
+
+<%@ include file="partials/footer.jsp" %>

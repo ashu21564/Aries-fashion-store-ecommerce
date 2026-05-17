@@ -1,0 +1,8 @@
+INDEX VERSION 1.4+C:\Users\ashwi\Desktop\AriesFashions\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
+2356425380.index
+420583176.index
+3866485222.index
+2587307623.index
+1986812206.index
+1552432810.index
+2807687443.index

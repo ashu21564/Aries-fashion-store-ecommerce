@@ -1,0 +1,87 @@
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" isELIgnored="false" %>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
+
+<!-- CSS -->
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/style.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/home.css">
+
+<!-- NAVBAR -->
+<%@ include file="partials/navbar.jsp" %>
+
+<!-- ================= HERO SECTION ================= -->
+<div class="hero">
+    <h1>Upgrade Your Style</h1>
+    <p>Discover the latest trends in Aries Fashion Store</p>
+</div>
+
+<!-- ================= CATEGORY SECTION ================= -->
+<div class="container category-section">
+
+    <h2>Shop by Category</h2>
+
+    <div class="categories">
+
+        <c:if test="${not empty categories}">
+            <c:forEach var="c" items="${categories}">
+                
+                <!-- ✅ CATEGORY CLICK -->
+                <a href="${pageContext.request.contextPath}/category?id=${c.categoryId}" class="category-card">
+                    ${c.categoryName}
+                </a>
+
+            </c:forEach>
+        </c:if>
+
+        <c:if test="${empty categories}">
+            <p>No categories available</p>
+        </c:if>
+
+    </div>
+
+</div>
+
+<!-- ================= PRODUCT SECTION ================= -->
+<div class="container products-section">
+
+    <h2>Latest Products</h2>
+
+    <div class="products-grid">
+
+        <c:if test="${not empty products}">
+            <c:forEach var="p" items="${products}">
+                <div class="product-card">
+
+                    <!-- 🔥 CLICKABLE PRODUCT -->
+                    <a href="${pageContext.request.contextPath}/product-variant?id=${p.productId}">
+
+                        <!-- IMAGE -->
+                        <img src="${pageContext.request.contextPath}/assets/images/${p.imageUrl}" 
+                             alt="${p.productName}" />
+
+                        <!-- NAME -->
+                        <h3>${p.productName}</h3>
+
+                    </a>
+
+                    <!-- DISCOUNT -->
+                    <p>${p.discountPercentage}% OFF</p>
+
+                    <!-- BUTTON -->
+                    <a href="${pageContext.request.contextPath}/product-variant?id=${p.productId}">
+                        <button class="btn">View</button>
+                    </a>
+
+                </div>
+            </c:forEach>
+        </c:if>
+
+        <c:if test="${empty products}">
+            <p>No products available</p>
+        </c:if>
+
+    </div>
+
+</div>
+
+<!-- FOOTER -->
+<%@ include file="partials/footer.jsp" %>

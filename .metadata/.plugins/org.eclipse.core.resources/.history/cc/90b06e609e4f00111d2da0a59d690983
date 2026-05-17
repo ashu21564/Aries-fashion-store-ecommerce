@@ -1,0 +1,50 @@
+package com.ariesfashionstore.controller;
+
+import com.ariesfashionstore.dao.ProductDAO;
+import com.ariesfashionstore.dao.CategoryDAO;
+
+import com.ariesfashionstore.dao.impl.ProductDAOImpl;
+import com.ariesfashionstore.dao.impl.CategoryDAOImpl;
+
+import com.ariesfashionstore.model.Product;
+import com.ariesfashionstore.model.Category;
+
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.*;
+
+import java.io.IOException;
+import java.util.List;
+
+@WebServlet("/home")
+public class HomeServlet extends HttpServlet {
+
+    private static final long serialVersionUID = 1L;
+
+    private ProductDAO productDAO;
+    private CategoryDAO categoryDAO;
+
+    @Override
+    public void init() {
+        productDAO = new ProductDAOImpl();
+        categoryDAO = new CategoryDAOImpl();
+    }
+
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+
+        // 🔥 FIXED: use working method
+        List<Product> products = productDAO.getAllActiveProducts();
+
+        // categories
+        List<Category> categories = categoryDAO.getAllCategories();
+
+        // send to JSP
+        request.setAttribute("products", products);
+        request.setAttribute("categories", categories);
+
+        request.getRequestDispatcher("/WEB-INF/views/home.jsp")
+               .forward(request, response);
+    }
+}

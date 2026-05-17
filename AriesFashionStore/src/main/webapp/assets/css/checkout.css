@@ -1,0 +1,160 @@
+/* ===== GLOBAL ===== */
+body {
+    background: #121212;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+/* ===== CONTAINER ===== */
+.checkout-container {
+    width: 90%;
+    margin: 40px auto;
+    color: #fff;
+}
+
+/* ===== TITLE ===== */
+.checkout-title {
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+/* ===== LAYOUT ===== */
+.checkout-layout {
+    display: flex;
+    gap: 30px;
+}
+
+/* ===== LEFT ===== */
+.order-summary {
+    flex: 2;
+    background: #1e1e1e;
+    padding: 20px;
+    border-radius: 12px;
+}
+
+/* CARD */
+.order-card {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px;
+    border-bottom: 1px solid #333;
+}
+
+.order-info p {
+    color: #bbb;
+    font-size: 14px;
+}
+
+.order-price {
+    color: #ff4da6;
+    font-weight: bold;
+}
+
+/* TOTAL */
+.order-total {
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
+    margin-top: 15px;
+}
+
+/* ===== RIGHT ===== */
+.checkout-form-box {
+    flex: 1;
+    background: #1e1e1e;
+    padding: 20px;
+    border-radius: 12px;
+}
+
+/* FORM */
+.checkout-form textarea,
+.checkout-form select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 6px;
+    border: none;
+    background: #2a2a2a;
+    color: #fff;
+}
+
+/* BUTTON */
+.place-order-btn {
+    width: 100%;
+    padding: 12px;
+    background: linear-gradient(135deg, #ff4da6, #c2185b);
+    border: none;
+    color: #fff;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.place-order-btn:hover {
+    background: #c2185b;
+}
+
+/* ===== SUCCESS UI ===== */
+.success-box {
+    text-align: center;
+    margin-top: 80px;
+}
+
+/* TICK */
+.checkmark-circle {
+    width: 80px;
+    height: 80px;
+    position: relative;
+    margin: 0 auto 20px;
+}
+
+.background {
+    width: 80px;
+    height: 80px;
+    background: #4CAF50;
+    border-radius: 50%;
+}
+
+.checkmark {
+    position: absolute;
+    left: 25px;
+    top: 40px;
+    width: 20px;
+    height: 40px;
+    border-right: 5px solid white;
+    border-bottom: 5px solid white;
+    transform: rotate(45deg);
+    animation: draw 0.5s ease forwards;
+}
+
+@keyframes draw {
+    0% { width: 0; height: 0; }
+    50% { width: 0; height: 40px; }
+    100% { width: 20px; height: 40px; }
+}
+
+/* BUTTON */
+.shop-btn {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background: #ff4da6;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 8px;
+}
+
+.shop-btn:hover {
+    background: #c2185b;
+}
+
+/* EMPTY */
+.checkout-empty {
+    text-align: center;
+    margin-top: 40px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+    .checkout-layout {
+        flex-direction: column;
+    }
+}

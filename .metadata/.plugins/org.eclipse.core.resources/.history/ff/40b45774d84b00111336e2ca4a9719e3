@@ -1,0 +1,54 @@
+package com.ariesfashionstore.controller;
+
+import com.ariesfashionstore.dao.ProductDAO;
+import com.ariesfashionstore.dao.ProductVariantDAO;
+import com.ariesfashionstore.dao.impl.ProductDAOImpl;
+import com.ariesfashionstore.dao.impl.ProductVariantDAOImpl;
+import com.ariesfashionstore.model.Product;
+import com.ariesfashionstore.model.ProductVariant;
+
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.*;
+
+import java.io.IOException;
+import java.util.List;
+
+@WebServlet("/product-details")
+public class ProductDetailsServlet extends HttpServlet {
+
+    private static final long serialVersionUID = 1L;
+
+    private ProductDAO productDAO;
+    private ProductVariantDAO variantDAO;
+
+    @Override
+    public void init() {
+        productDAO = new ProductDAOImpl();
+        variantDAO = new ProductVariantDAOImpl();
+    }
+
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+
+        String productIdStr = request.getParameter("id");
+
+        // ❗ Safety check
+        if (productIdStr == null) {
+            response.sendRedirect(request.getContextPath() + "/products");
+            return;
+        }
+
+        int productId = Integer.parseInt(productIdStr);
+
+        Product product = productDAO.getProductById(productId);
+        List<ProductVariant> variants = variantDAO.getVariantsByProductId(productId);
+
+        request.setAttribute("product", product);
+        request.setAttribute("variants", variants);
+
+        request.getRequestDispatcher("/WEB-INF/views/product-details.jsp")
+                .forward(request, response);
+    }
+}

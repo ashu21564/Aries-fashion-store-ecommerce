@@ -1,0 +1,20 @@
+<form action="${pageContext.request.contextPath}/cart" method="post">
+
+    <input type="hidden" name="action" value="add"/>
+    <input type="hidden" name="productId" value="${product.productId}" />
+
+    <label>Select Size:</label>
+
+    <select name="sizeLabel" required>
+        <c:forEach var="v" items="${variants}">
+            <option value="${v.sizeLabel}">
+                ${v.sizeLabel}
+            </option>
+        </c:forEach>
+    </select>
+
+    <button type="submit" class="btn">
+        Add to Cart
+    </button>
+
+</form>

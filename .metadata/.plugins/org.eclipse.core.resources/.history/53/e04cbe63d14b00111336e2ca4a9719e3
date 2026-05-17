@@ -1,0 +1,35 @@
+@Override
+protected void doGet(HttpServletRequest request, HttpServletResponse response)
+        throws IOException, ServletException {
+
+    String keyword = request.getParameter("keyword");
+    String categoryIdStr = request.getParameter("categoryId");
+    String sort = request.getParameter("sort");
+
+    List<Product> products;
+
+    // 🔍 SEARCH
+    if (keyword != null && !keyword.isEmpty()) {
+        products = productDAO.searchProducts(keyword);
+    }
+    // 📂 CATEGORY FILTER
+    else if (categoryIdStr != null && !categoryIdStr.isEmpty()) {
+        int categoryId = Integer.parseInt(categoryIdStr);
+        products = productDAO.getProductsByCategory(categoryId);
+    }
+    // 🔽 SORTING
+    else if ("asc".equals(sort)) {
+        products = productDAO.getProductsSortedByPriceAsc();
+    } else if ("desc".equals(sort)) {
+        products = productDAO.getProductsSortedByPriceDesc();
+    }
+    // 🛍️ DEFAULT
+    else {
+        products = productDAO.getAllActiveProducts();
+    }
+
+    request.setAttribute("products", products);
+
+    request.getRequestDispatcher("/WEB-INF/views/products.jsp")
+            .forward(request, response);
+}
