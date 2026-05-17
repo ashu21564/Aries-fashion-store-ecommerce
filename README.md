@@ -1,11 +1,3 @@
-Perfect — your UI looks really clean and professional 🔥
-I’ll give you a complete README with your screenshots properly structured so you can paste it directly into GitHub.
-
-
----
-
-✅ 📄 FINAL README (Copy & Paste in GitHub)
-
 # 🛍️ Aries Fashion Store – E-commerce Web Application
 
 Aries Fashion Store is a full-stack e-commerce web application designed to provide a seamless online shopping experience. Users can browse products, add items to cart, and place orders, while administrators can efficiently manage products, users, and orders.
